@@ -1,0 +1,457 @@
+/* ---------- COLOR THEME: NFSU INFO ---------- */
+:root {
+  --primary: #8B0000;          /* dark maroon red */
+  --gradient-secondary: #9C27B0; /* purple blend */
+  --text-dark: #222222;
+  --text-light: #ffffff;
+  --accent: #E53935;           /* bright red for buttons */
+  --bg-light: #faf6f6;
+}
+
+/* ---------- BASE STYLES ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* ---------- NAVBAR ---------- */
+header {
+  background: linear-gradient(90deg, var(--primary), var(--gradient-secondary));
+  color: var(--text-light);
+  padding: 0.8rem 1rem;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-light);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.nav-links li {
+  margin-left: 1rem;
+}
+
+.nav-links a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links a:hover,
+.nav-links .active {
+  color: var(--accent);
+}
+
+/* ---------- MOBILE MENU ---------- */
+.menu-btn {
+  font-size: 1.8rem;
+  cursor: pointer;
+  display: none;
+  color: var(--text-light);
+}
+
+@media (max-width: 768px) {
+  .menu-btn {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--gradient-secondary));
+    text-align: center;
+    padding: 1rem 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 1rem 0;
+  }
+}
+
+/* ---------- HERO SECTION ---------- */
+.hero {
+  background: linear-gradient(to right, var(--primary), var(--gradient-secondary));
+  color: var(--text-light);
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.hero h1 {
+  font-size: 2.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--text-light);
+  padding: 0.7rem 1.3rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+/* ---------- UPDATES PREVIEW ---------- */
+.updates-preview {
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.updates-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 2rem auto;
+}
+
+.update-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  text-align: left;
+  transition: transform 0.2s;
+}
+
+.update-card:hover {
+  transform: translateY(-5px);
+}
+
+.update-card h3 {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.btn-link {
+  display: inline-block;
+  color: var(--gradient-secondary);
+  margin-top: 0.5rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.btn-link:hover {
+  color: var(--accent);
+}
+
+/* ---------- COUNSELLING SECTION ---------- */
+.counselling-section {
+  background: url('../images/counselling-bg.jpg') center/cover no-repeat;
+  position: relative;
+  padding: 6rem 1rem;
+  color: #fff;
+  text-align: center;
+}
+
+.counselling-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(139,0,0,0.85), rgba(156,39,176,0.4));
+}
+
+.counselling-section .overlay {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* ---------- UNIVERSITIES SLIDER ---------- */
+.universities {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.universities h2 {
+  color: var(--primary);
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.slider {
+  overflow: hidden;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.slide-track {
+  display: flex;
+  width: calc(340px * 12);
+
+  animation: scroll 28s linear infinite;
+  align-items: center;
+}
+
+.slide-track img {
+  width: 320px;         /* bigger image size */
+  height: 180px;        /* fixed uniform height */
+  object-fit: cover;    /* prevents stretching */
+  margin: 0 1.5rem;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+
+.slide-track img:hover {
+  transform: scale(1.1);
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ---------- GUIDANCE SECTION ---------- */
+.guidance {
+  background: #fff;
+  padding: 4rem 1rem;
+}
+
+.guidance-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.guidance .left img {
+  width: 320px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.guidance .right {
+  max-width: 560px;
+}
+
+.guidance .right h3 {
+  color: var(--primary);
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.guidance .right p {
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  background: linear-gradient(90deg, var(--primary), var(--gradient-secondary));
+  color: var(--text-light);
+  text-align: center;
+  padding: 1.5rem 1rem;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.social-links a {
+  display: inline-block;
+  margin-left: 0.6rem;
+  text-decoration: none;
+  color: var(--text-light);
+  background: rgba(255,255,255,0.08);
+  padding: 0.45rem 0.6rem;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+/* === HERO SECTION (New Layout) === */
+.hero {
+  background: linear-gradient(90deg, #f5f9ff 0%, #ffffff 100%);
+  padding: 100px 8%;
+}
+
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.hero-text {
+  flex: 1 1 45%;
+  max-width: 550px;
+}
+
+.hero-text .tagline {
+  color: #007b55;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.hero-text h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0b2239;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.hero-text p {
+  font-size: 1.05rem;
+  color: #444;
+  margin-bottom: 30px;
+}
+
+.btn-primary {
+  background-color: #007b55;
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #005c3f;
+}
+
+/* === HERO IMAGE SIDE === */
+.hero-image {
+  position: relative;
+  flex: 1 1 45%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 400px;
+  z-index: 2;
+  position: relative;
+}
+
+.circle-bg {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, #ffe8cc 0%, #fff5e1 100%);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* === PROMO BANNER (Footer Section like Eduker) === */
+.promo-banner {
+  position: relative;
+  background: url("college-bg.jpg") center/cover no-repeat; /* apni bg image yahan daalo */
+  padding: 100px 20px;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+}
+
+.promo-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+
+.promo-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.promo-content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  line-height: 1.4;
+}
+
+.promo-btn {
+  background: #ffcc00;
+  color: #000;
+  padding: 14px 32px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.promo-btn:hover {
+  background: #ffaa00;
+}
+
+/* === RESPONSIVE FIX === */
+@media (max-width: 900px) {
+  .hero-container {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  .hero-image img {
+    max-width: 300px;
+  }
+  .circle-bg {
+    width: 320px;
+    height: 320px;
+  }
+  .promo-content h2 {
+    font-size: 1.5rem;
+  }
+}
