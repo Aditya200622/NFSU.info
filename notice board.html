@@ -3,360 +3,203 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Notice Board | NFSU Admission 2025</title>
-
-  <!-- Simple Internal CSS – colours/font tum apne theme ke hisaab se change kar lena -->
+  <title>NFSU Info | Admission Notice 2025</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    :root {
-      --primary: #004aad;
-      --primary-soft: rgba(0, 74, 173, 0.08);
-      --accent: #ffb400;
-      --bg: #f5f7fb;
-      --text: #1f2933;
-      --muted: #6b7280;
-      --border: #e5e7eb;
-    }
-
-    * {
-      box-sizing: border-box;
+    body {
+      background: #f7efef;
+      font-family: "Segoe UI", Arial, sans-serif;
       margin: 0;
       padding: 0;
     }
 
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      padding: 20px;
-    }
-
-    .notice-wrapper {
-      max-width: 900px;
-      margin: 0 auto;
+    .notice-container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 3rem 1rem;
     }
 
     .notice-card {
-      background: #ffffff;
-      border-radius: 18px;
-      padding: 24px 22px;
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
-      border: 1px solid var(--border);
-    }
-
-    .notice-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      font-size: 12px;
-      border-radius: 999px;
-      background: var(--primary-soft);
-      color: var(--primary);
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    .notice-badge span.dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
-    }
-
-    h1.notice-title {
-      font-size: 24px;
-      margin-bottom: 4px;
-      color: var(--primary);
-    }
-
-    .notice-subtitle {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-
-    .notice-highlight-box {
+      background: #fff;
+      padding: 2rem;
       border-radius: 14px;
-      background: var(--primary-soft);
-      padding: 12px 14px;
-      font-size: 14px;
-      margin-bottom: 18px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     }
 
-    .notice-highlight-box strong {
-      color: var(--primary);
-    }
-
-    .notice-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    .notice-item {
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      padding: 12px 14px;
-      background: #fafafa;
-    }
-
-    .notice-item-title {
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 4px;
-      color: var(--primary);
-    }
-
-    .notice-item-meta {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-
-    .notice-item p {
-      font-size: 13px;
-      line-height: 1.4;
-    }
-
-    .notice-section-title {
-      font-size: 16px;
-      font-weight: 700;
-      margin: 18px 0 6px;
-    }
-
-    .notice-description {
-      font-size: 14px;
-      line-height: 1.6;
-      color: var(--text);
-      margin-bottom: 8px;
-    }
-
-    .notice-description ul {
-      list-style: disc;
-      margin-left: 18px;
-      margin-top: 6px;
-    }
-
-    .notice-description li {
-      font-size: 14px;
-      margin-bottom: 3px;
-    }
-
-    /* BIG IMAGE PLACEHOLDER */
-    .notice-image-wrapper {
-      margin: 22px 0 18px;
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px dashed var(--border);
-      background: linear-gradient(135deg, #e5edff, #fdf6e3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 220px;
-      position: relative;
-    }
-
-    .notice-image-wrapper img {
-      width: 100%;
-      max-height: 320px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .notice-image-placeholder-text {
-      position: absolute;
+    h1 {
+      color: #8B0000;
+      font-size: 2.2rem;
+      margin-bottom: 0.6rem;
       text-align: center;
-      padding: 12px 18px;
-      background: rgba(0, 0, 0, 0.55);
+    }
+
+    h2, h3 {
+      color: #8B0000;
+    }
+
+    .sub-text {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #444;
+    }
+
+    /* Banner Image */
+    .banner-wrapper {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      margin: 1.5rem 0 2rem;
+      background: #eee;
+    }
+
+    .banner-wrapper img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .banner-note {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(0,0,0,0.55);
       color: #fff;
-      border-radius: 999px;
+      padding: 6px 14px;
       font-size: 13px;
-      backdrop-filter: blur(3px);
+      border-radius: 10px;
     }
 
-    /* IMPORTANT LINKS */
-    .notice-links {
-      margin-top: 14px;
-      border-top: 1px solid var(--border);
-      padding-top: 12px;
-      display: grid;
-      gap: 10px;
+    /* Highlight Box */
+    .highlight {
+      background: #fff4f4;
+      padding: 1rem;
+      border-left: 4px solid #8B0000;
+      border-radius: 10px;
+      margin: 1rem 0;
+      color: #7a0000;
+      font-size: 15px;
     }
 
-    .link-group-title {
-      font-size: 14px;
+    /* List styling */
+    ul {
+      margin-left: 1.4rem;
+      line-height: 1.7;
+      color: #333;
+      font-size: 15px;
+    }
+
+    /* Links */
+    .important-links {
+      margin-top: 1.8rem;
+      background: #fafafa;
+      padding: 1rem;
+      border-radius: 12px;
+      border: 1px solid #ddd;
+    }
+
+    .important-links a {
+      display: block;
+      margin-bottom: 8px;
+      color: #d02090;
       font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .notice-link-list {
-      list-style: none;
-    }
-
-    .notice-link-list li {
-      margin-bottom: 6px;
-      font-size: 14px;
-    }
-
-    .notice-link-list a {
       text-decoration: none;
-      color: var(--primary);
-      font-weight: 600;
     }
 
-    .notice-link-list a:hover {
+    .important-links a:hover {
       text-decoration: underline;
     }
 
-    .small-note {
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 4px;
-    }
-
-    @media (max-width: 480px) {
-      h1.notice-title {
-        font-size: 20px;
-      }
-      .notice-card {
-        padding: 18px 14px;
-      }
-    }
   </style>
 </head>
-
 <body>
-  <div class="notice-wrapper">
-    <section id="notice-nfsu-2025" class="notice-card">
-      <!-- Status Badge -->
-      <div class="notice-badge">
-        <span class="dot"></span>
-        NFSU Admission 2025 – NFAT
+
+  <!-- Navbar (as provided) -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">NFSU Info</div>
+      <div class="menu-btn" aria-label="menu">&#9776;</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="updates.html">Updates</a></li>
+        <li><a href="counselling.html">Counselling</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="results.html">Results</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <!-- FULL NOTICE CONTENT -->
+  <main class="notice-container">
+    <div class="notice-card">
+
+      <h1>🔔 NFSU Admission Notice 2025</h1>
+      <p class="sub-text">Complete details on registration, NFAT exam, eligibility, and admission schedule.</p>
+
+      <!-- Banner Image -->
+      <div class="banner-wrapper">
+        <img src="images/nfsu-admission-2025-banner.jpg" alt="NFSU Admission 2025 Banner">
+        <div class="banner-note">Replace this with your admission banner</div>
       </div>
 
-      <!-- Main Heading -->
-      <h1 class="notice-title">NFSU Registration 2025 (NFAT) – Admission Notice</h1>
-      <p class="notice-subtitle">
-        National Forensic Sciences University (NFSU) – Admissions for Academic Year 2025–26
+      <h2>📌 Admission Overview</h2>
+      <p>
+        National Forensic Sciences University (NFSU) has opened admissions for the academic year 2025–26.
+        Registration is being conducted online through the official portal until
+        <strong>May 5, 2025</strong>.
       </p>
 
-      <!-- Top Highlight (Dates) -->
-      <div class="notice-highlight-box">
-        <strong>Important:</strong>
-        NFSU registration for AY 2025–26 was open in online mode at
-        <strong>nfsu.ac.in / nfsuadm.samarth.edu.in</strong>.  
-        Registration deadline (Indian students) was <strong>extended up to 10 June 2025</strong>, and
-        <strong>NFAT 2025</strong> was conducted on <strong>28 &amp; 29 June 2025</strong>
-        (revised schedule).
+      <div class="highlight">
+        Important: NFAT 2025 will be conducted on <strong>June 7 & 8, 2025</strong> for all eligible applicants.
       </div>
 
-      <!-- Key Details Grid -->
-      <div class="notice-grid">
-        <div class="notice-item">
-          <div class="notice-item-title">Online Registration</div>
-          <div class="notice-item-meta">Indian Students · AY 2025–26</div>
-          <p>
-            Mode: Online at nfsu.ac.in  
-            Last date (after extension): <strong>10 June 2025</strong>  
-            Candidates had to check course-wise eligibility before filling the form.
-          </p>
-        </div>
+      <h2>📅 Key Dates for Admission 2025</h2>
+      <ul>
+        <li><strong>Registration Deadline:</strong> May 5, 2025</li>
+        <li><strong>NFAT Entrance Exam:</strong> June 7 & 8, 2025</li>
+        <li><strong>Merit List Release:</strong> June 23, 2025</li>
+        <li><strong>Counselling Round 1:</strong> June 30, 2025</li>
+      </ul>
 
-        <div class="notice-item">
-          <div class="notice-item-title">NFAT 2025 – Entrance Test</div>
-          <div class="notice-item-meta">National Forensic Admission Test</div>
-          <p>
-            Entrance exam for various UG, PG, Diploma &amp; other programmes of NFSU.  
-            Revised exam dates: <strong>28 &amp; 29 June 2025</strong><br>
-            Mode: Pen &amp; paper (OMR based) as per updated notification.
-          </p>
-        </div>
+      <h2>🎓 Courses Offered</h2>
+      <ul>
+        <li>MSc Forensic Science</li>
+        <li>MSc Cyber Security & Digital Forensics</li>
+        <li>Criminology & Forensic Psychology</li>
+        <li>Professional Diploma in Crime Scene Management</li>
+        <li>BSc, PG Diploma & Certificate Courses</li>
+      </ul>
 
-        <div class="notice-item">
-          <div class="notice-item-title">Offered Programmes (Highlights)</div>
-          <div class="notice-item-meta">Multiple Schools &amp; Campuses</div>
-          <p>
-            NFSU offers programmes in:
-            <br>• Forensic Science &amp; Forensic Biotechnology  
-            <br>• Cyber Security &amp; Digital Forensics  
-            <br>• Criminology, Law &amp; Investigative Sciences  
-            <br>• Professional Diploma courses (e.g., Crime Scene Management) and more.
-          </p>
-        </div>
+      <h3>Eligibility Note</h3>
+      <div class="highlight">
+        Candidates must verify eligibility carefully.  
+        Ineligible applicants may be disqualified at any stage of the admission process.
       </div>
 
-      <!-- BIG IMAGE PLACEHOLDER -->
-      <div class="notice-image-wrapper">
-        <!-- 
-          Yahan apni image ka path daal dena:
-          Example: images/nfsu-banner.jpg
-        -->
-        <img src="images/nfsu-admission-2025-banner.jpg" alt="NFSU Admission 2025 Banner" />
-        <div class="notice-image-placeholder-text">
-          Replace this with your NFSU 2025 admission banner image
-        </div>
+      <h2>🔗 Important Links</h2>
+      <div class="important-links">
+        <a href="https://nfsuadm.samarth.edu.in" target="_blank">NFSU Admission Portal (Samarth)</a>
+        <a href="https://nfsu.ac.in/admission" target="_blank">Official Admission Page</a>
+        <a href="https://nfsu.ac.in" target="_blank">NFSU Main Website</a>
       </div>
 
-      <!-- About / Description -->
-      <h2 class="notice-section-title">About NFSU &amp; NFAT 2025</h2>
-      <div class="notice-description">
-        <p>
-          National Forensic Sciences University (NFSU) is an Institute of National Importance
-          known for its advanced programmes in forensic sciences, cyber security, law,
-          criminology, and investigative sciences.
-        </p>
-        <p>
-          NFAT 2025 (National Forensic Admission Test) is the common entrance test for
-          admission to multiple NFSU programmes across various campuses. Candidates must:
-        </p>
-        <ul>
-          <li>Carefully read the official admission brochure and eligibility criteria.</li>
-          <li>Fill the online application form with correct details and required documents.</li>
-          <li>Download the NFAT admit card from the official portal before the exam.</li>
-          <li>Follow all instructions mentioned in the admit card and exam guidelines.</li>
-        </ul>
-      </div>
+    </div>
+  </main>
 
-      <!-- Important Note -->
-      <div class="notice-highlight-box" style="margin-top: 10px;">
-        <strong>Note:</strong>
-        Ineligible candidates can be disqualified at any stage of the admission process.
-        Students are advised to rely only on official NFSU notifications for final dates,
-        merit lists and counselling schedules.
-      </div>
 
-      <!-- IMPORTANT LINKS SECTION -->
-      <div class="notice-links">
-        <div>
-          <div class="link-group-title">Important Links</div>
-          <ul class="notice-link-list">
-            <li>
-              👉
-              <a href="https://nfsuadm.samarth.edu.in/" target="_blank" rel="noopener noreferrer">
-                NFSU Admission Portal 2025 (Samarth)
-              </a>
-            </li>
-            <li>
-              👉
-              <a href="https://nfsu.ac.in/admission" target="_blank" rel="noopener noreferrer">
-                Official NFSU Admission Page
-              </a>
-            </li>
-            <li>
-              👉
-              <a href="https://nfsu.ac.in" target="_blank" rel="noopener noreferrer">
-                NFSU Official Website (Home)
-              </a>
-            </li>
-          </ul>
-          <p class="small-note">
-            For latest updates on merit list, counselling and revised schedules, students must
-            check official NFSU notices regularly.
-          </p>
-        </div>
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="left">© 2025 NFSU Info | All Rights Reserved</div>
+      <div class="right social-links">
+        <span>Follow:</span>
+        <a href="#" target="_blank">YouTube</a>
+        <a href="#" target="_blank">Instagram</a>
       </div>
-    </section>
-  </div>
+    </div>
+  </footer>
+
 </body>
 </html>
